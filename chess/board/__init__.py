@@ -1,1 +1,2 @@
-from .board import Point, Board
+from .board import Board
+from .point import Point

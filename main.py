@@ -12,8 +12,9 @@ if __name__ == "__main__":
     #this would be triggered by a person's click
     #but will be simulated by just hard coding for now
     queen_on_board = Point(4,1,queen)
-    board.insert_piece(queen_on_board)
-    board.insert_piece(Point(3,3,pawn))
+    board.insert_all(queen_on_board)
+    board.insert_all(Point(3,3,pawn))
     board.update(queen_on_board)
 
     print(board)
+    board.view_overlay()
