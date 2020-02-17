@@ -1,20 +1,17 @@
-
-from chess.units import (Queen, King, Pawn, Rook, Bishop, Knight, Suggestion)
-from chess.board import Board, Point
+from chess.board import Board
+from setup import setup_units
 from collections import deque
 
 
 if __name__ == "__main__":
     board = Board()
     
-    queen = Knight(1)
-    pawn = Pawn(-1)
+    #put board setup here
+    setup_units(board)
+
     #this would be triggered by a person's click
     #but will be simulated by just hard coding for now
-    queen_on_board = Point(4,1,queen)
-    board.insert_all(queen_on_board)
-    board.insert_all(Point(3,3,pawn))
-    board.update(queen_on_board)
+    # board.scope_units(queen_on_board) #the player selects the unit
 
     print(board)
     board.view_overlay()

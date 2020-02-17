@@ -2,7 +2,6 @@ from chess.units import Unit, Empty, Suggestion, Enemy
 from chess.board.point import Point
 from chess.board.board_logic import BoardLogic
 from typing import List
-from chess.board import 
 
 class Board:
     def __init__(self):
@@ -25,7 +24,7 @@ class Board:
             output += "{} {} {} {} {} {} {} {}\n".format(*map(lambda x: x.piece.char, row))
         return output
 
-    def update(self, unit_on_board: Point):
+    def scope_units(self, unit_on_board: Point):
         """
         typically  called when the player select a chess piece, but
         hasn't made their move yet
@@ -37,10 +36,12 @@ class Board:
     def insert_all(self, point: Point):
         """
         Used to assign boards to the next state.  This call should be made primarily
-        for when going to a different turn
+        for when going to a different turn.  However is called on all units
+        before for setup
         """
         self.insert_piece(point)
         self.insert_overlay(point)
+        self.logic.coordinates = self.coordinates
 
     def insert_piece(self, point: Point):
         if point.row < len(self.coordinates) and point.col < len(self.coordinates[0]):

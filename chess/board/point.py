@@ -1,6 +1,10 @@
 from chess.units import Unit
 
 class Point:
+    """
+    A generalized place on the board that can
+    have any type of piece associated with it
+    """
     def __init__(self, row, col,piece: Unit):
         self.row = row
         self.col = col
