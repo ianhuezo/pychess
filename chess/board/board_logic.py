@@ -30,6 +30,7 @@ class BoardLogic:
         point_queue = deque([unit_on_board])
         limit, direction_func = self.move_map(initial_position)
         early_end = 0
+        in_check = False
         potential_moves = []
         while point_queue and early_end < limit:
             point = point_queue.popleft()
@@ -40,11 +41,15 @@ class BoardLogic:
                 if current.piece.char == "-":
                     potential_moves.append(neighbor)
                     point_queue.append(neighbor)
+                elif current.piece.char != "*" and current.piece.team != initial_position.piece.team and current.piece.char == "Ki":
+                    enemy = Enemy(neighbor.piece.team)
+                    potential_moves.append((Point(neighbor.row, neighbor.col, enemy)))
+                    in_check = True
                 elif current.piece.char != "*" and current.piece.team != initial_position.piece.team:
                     enemy = Enemy(neighbor.piece.team)
                     potential_moves.append((Point(neighbor.row, neighbor.col, enemy)))
             early_end += 1
-        return potential_moves
+        return potential_moves, in_check
 
     def omni_directions(self, point, initial_position):
         return self.slope_directions(point, initial_position) + self.cardinal_directions(point, initial_position)

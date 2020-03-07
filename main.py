@@ -7,7 +7,7 @@ if __name__ == "__main__":
     board = Board()
     
     #put board setup here
-    setup_units(board)
+    board.setup()
 
     #this would be triggered by a person's click
     #but will be simulated by just hard coding for now

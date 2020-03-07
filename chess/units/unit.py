@@ -4,6 +4,7 @@ class Unit(ABC):
 
     def __init__(self,team: int = 0):
         self.team = team
+        self.is_alive = True
 
     @property
     @abstractmethod
