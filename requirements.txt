@@ -7,7 +7,7 @@ Kivy-Garden==0.1.4
 olefile==0.46
 pafy==0.5.4
 Pillow==7.0.0
-Pygments==2.5.2
+Pygments==2.7.4
 requests==2.22.0
 urllib3==1.25.8
 wincertstore==0.2
